@@ -91,3 +91,9 @@ You can also do the same for a playlist:
 ```bash
 $ pytube https://www.youtube.com/playlist?list=PLS1QulWo1RIaJECMeUT4LFwJ-ghgoSH6n
 ```
+
+## Note:
+
+### Why is this forked?:
+* Well, this is a fork (ofc you guys know that), I wanted to fork this because I wanted to create a small modification to the logger, which will help the users, modify the default logger and use it in their projects.
+* Just modified the logger to be the children of the base/root logger `pytube``, which allows the users to easily add, remove, and configure handlers in their program's logging.

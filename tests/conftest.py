@@ -1,4 +1,5 @@
 """Reusable dependency injected testing components."""
+
 import gzip
 import json
 import os
@@ -18,7 +19,7 @@ def load_playback_file(filename):
         return json.loads(content)
 
 
-@mock.patch('pytube.request.urlopen')
+@mock.patch("pytube.request.urlopen")
 def load_and_init_from_playback_file(filename, mock_urlopen):
     """Load a gzip json playback file and create YouTube instance."""
     pb = load_playback_file(filename)
@@ -26,8 +27,8 @@ def load_and_init_from_playback_file(filename, mock_urlopen):
     # Mock the responses to YouTube
     mock_url_open_object = mock.Mock()
     mock_url_open_object.read.side_effect = [
-        pb['watch_html'].encode('utf-8'),
-        pb['js'].encode('utf-8')
+        pb["watch_html"].encode("utf-8"),
+        pb["js"].encode("utf-8"),
     ]
     mock_urlopen.return_value = mock_url_open_object
 
@@ -38,7 +39,7 @@ def load_and_init_from_playback_file(filename, mock_urlopen):
     #  deferred
     v = YouTube(pb["url"])
     v.watch_html
-    v._vid_info = pb['vid_info']
+    v._vid_info = pb["vid_info"]
     v.js
     v.fmt_streams
     return v
@@ -131,7 +132,7 @@ def stream_dict():
     )
     with gzip.open(file_path, "rb") as f:
         content = json.loads(f.read().decode("utf-8"))
-        return content['watch_html']
+        return content["watch_html"]
 
 
 @pytest.fixture
@@ -144,8 +145,8 @@ def channel_videos_html():
         "mocks",
         "channel-videos.html.gz",
     )
-    with gzip.open(file_path, 'rb') as f:
-        return f.read().decode('utf-8')
+    with gzip.open(file_path, "rb") as f:
+        return f.read().decode("utf-8")
 
 
 @pytest.fixture
@@ -161,6 +162,6 @@ def base_js():
             "mocks",
             file,
         )
-        with gzip.open(file_path, 'rb') as f:
-            base_js_files.append(f.read().decode('utf-8'))
+        with gzip.open(file_path, "rb") as f:
+            base_js_files.append(f.read().decode("utf-8"))
     return base_js_files

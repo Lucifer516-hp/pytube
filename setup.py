@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """This module contains setup instructions for pytube."""
+
 import codecs
 import os
 
@@ -19,12 +20,14 @@ setup(
     author="Ronnie Ghose, Taylor Fox Dahlin, Nick Ficano",
     author_email="hey@pytube.io",
     packages=["pytube", "pytube.contrib"],
-    package_data={"": ["LICENSE"],},
+    package_data={
+        "": ["LICENSE"],
+    },
     url="https://github.com/pytube/pytube",
     license="The Unlicense (Unlicense)",
     entry_points={
-        "console_scripts": [
-            "pytube = pytube.cli:main"],},
+        "console_scripts": ["pytube = pytube.cli:main"],
+    },
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
@@ -54,5 +57,10 @@ setup(
         "Bug Reports": "https://github.com/pytube/pytube/issues",
         "Read the Docs": "https://pytube.io",
     },
-    keywords=["youtube", "download", "video", "stream",],
+    keywords=[
+        "youtube",
+        "download",
+        "video",
+        "stream",
+    ],
 )
